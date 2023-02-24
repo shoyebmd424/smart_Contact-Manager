@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+	 th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>User Dahsboard</title>
+</head>
+<body>
+<section>
+<div class="container">
+<div class="card bg-secondary">
+	<div class="card-body">
+	<h1  class="mb-5 text-white">Welcome to SmartContactManger</h1>
+	<div class="text-center" ><img class="col-3 m-auto rounded-circle" th:src="@{'/image/'+${user.imageulr}}" alt="" /></div>
+ <h2 class="my-4 text-center text-light"> <i>	You can Manage your Contacts....</i></h2>
+ <div class="text-center"> <a th:href="@{/user/show-contacts/0}" class="btn block  btn-primary px-3"><h5> Show Contacts</h5></a></div>
+	</div>
+</div></div>
+	
+	</section>
+</body>
+</html>

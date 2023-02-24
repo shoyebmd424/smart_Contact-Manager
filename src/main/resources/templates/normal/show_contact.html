@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+	 th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>About Page</title>
+</head>
+<body>
+<section>
+<h1>
+Your Contacts
+</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="c:${contacts}">
+      <th scope="row" th:text="'SCM2020'+${c.cid}"></th>
+      <td >  <img alt="" class="col-3 rounded-circle" th:src="@{'/image/'+${c.image}}"> <span th:text="${c.name}"></span> <span th:text="${c.secondName}"></span></td> 
+      <td > <a style="text-decoration:none;" th:href="@{'/user/'+${c.cid}+'/contacts/'}" th:text="${c.email}"></a> </td>
+      <td th:text ="${c.phone}"></td>
+      <td class="d-flex">
+      <a th:href="@{'/user/delete/'+${c.cid}}" class="btn mx-2 btn-danger">DELETE</a> 
+    <form th:action="@{'/user/update-contact/'+${c.cid}}" method="post">  <button class="btn btn-primary">UPDATE</button> </form>
+      </td>
+    </tr>
+   
+  </tbody>
+</table>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li th:if="${cpage!=0}" class="page-item"><a class="page-link" th:href="@{'/user/show-contacts/'+${cpage-1}}">Previous</a></li>
+    <li th:each="i:${#numbers.sequence(1,total)}"th:classappend="${cpage==i-1?'active':''}" class="page-item"><a class="page-link" th:href="@{'/user/show-contacts/'+${i-1}}" th:text="${i}"></a></li>
+
+    <li th:if="${cpage+1!=total}"  class="page-item"><a class="page-link" th:href="@{'/user/show-contacts/'+${cpage+1}}">Next</a></li>
+  </ul>
+</nav>
+</section>
+	
+</body>
+</html>

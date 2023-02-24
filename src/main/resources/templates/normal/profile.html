@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+	 th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>About Page</title>
+</head>
+<body>
+<section>
+
+
+
+<div th:if="${user}" class="card p-5">
+<div class="text-center">
+   <img alt="" class="col-3  rounded-circle" th:src="@{'/image/'+${user.imageulr}}"></div> 
+
+<h1 class="text-center" th:text="${user.name}"></h1>
+<table class="table" >
+  <thead>
+    <tr>
+      <th scope="col">#ID</th>
+      <th scope="col" th:text="'UCM2022'+${user.id}"></th>
+    </tr>
+    <tr>
+      <th >Email</th>
+      <th scope="row" th:text="${user.email}"></th>
+    </tr>
+    <tr>
+      <th >Role</th>
+      <th scope="row" th:text="${user.role}"></th>
+    </tr>
+    <tr>
+      <th >Account Active</th>
+      <th scope="row" th:text="${user.enabled}"></th>
+    </tr>
+  </thead>
+  <tbody>
+   </tbody>
+   </table>
+   <p class="text-center" th:text="${user.about}"></p>
+   </div>
+   <h1 class="text-danger" th:unless="${user}">You cann't see other auther contacts</h1>
+</section>
+	
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+	 th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>About Page</title>
+</head>
+<body>
+<section>
+<div th:if="${contact}" class="card p-4">
+<div class="text-center">
+ <img alt="" class="col-3  rounded-circle" th:src="@{'/image/'+${contact.image}}"></div>
+ <h3 class="text-center text-primary"> <span class="me-1" th:text="${contact.name}" ></span> <span th:text="${contact.secondName}"></span></h3>
+<table class="table" >
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col" th:text="'SCM2022'+${contact.cid}"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td >Email</td>
+      <th scope="row" th:text="${contact.email}"></th>
+    </tr>
+    <tr>
+      <td >Phone</td>
+      <th scope="row" th:text="${contact.phone}"></th>
+    </tr>
+    <tr>
+      <td >Work</td>
+      <th scope="row" th:text="${contact.work}"></th>
+    </tr>
+   </tbody>
+   </table>
+ <p th:text="${contact.description}"></p></div>
+   <h1 class="text-danger" th:unless="${contact}">You cann't see other auther contacts</h1>
+</section>
+	
+</body>
+</html>
